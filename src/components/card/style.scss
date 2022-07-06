@@ -1,0 +1,131 @@
+// Variables
+$card-container-color: #48365e;
+$primary-color: #6136ff;
+
+// Styles
+.card-container {
+  display: flex;
+  position: relative;
+  background-color: $card-container-color;
+  border-radius: 0.5rem;
+  width: 400px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    .card-actions {
+      transform-origin: 20px 20px;
+      transform: scale(1);
+      bottom: -10px;
+      right: -10px;
+    }
+  }
+
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      color: white;
+
+      .card-info-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card-info-title:first-child {
+        font-size: 1.2rem;
+        padding-bottom: 0.5rem;
+      }
+      .card-info-title {
+        span:first-child {
+          font-weight: bold;
+        }
+      }
+      img {
+        width: 25px;
+      }
+    }
+
+    .card-img {
+      background-color: white;
+      overflow: hidden;
+      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .card-actions {
+    background-color: $primary-color;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: all 0.15s ease-in;
+    transform: scale(0);
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      margin: 0 auto;
+    }
+  }
+
+  .added {
+    background-color: $primary-color;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: scale(1);
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      margin: 0 auto;
+    }
+  }
+  .remove {
+    background-color: white;
+    color: $primary-color;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: all 0.15s ease-in;
+    transform: scale(0);
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid $primary-color;
+
+    svg {
+      margin: 0 auto;
+      height: 25px;
+      width: 25px;
+    }
+  }
+}
+
+@media (max-width: 865px) {
+  .card-container {
+    width: 100%;
+  }
+}
