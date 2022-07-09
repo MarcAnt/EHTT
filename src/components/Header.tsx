@@ -21,13 +21,13 @@ import {
 import Btn from "./Button";
 import Logo from "../assets/logo.svg";
 
+import { motion } from "framer-motion";
 import Search from "./Search";
 import Card from "./card";
 import Pagination from "./Pagination";
 
 import EmployeeContext from "@/context/EmployeesContext";
 import { Employee } from "@/interfaces";
-import { motion } from "framer-motion";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -85,7 +85,11 @@ const Header = () => {
         <ModalContent bg={"bgBody.200"}>
           <ModalHeader>Favorite Employees List</ModalHeader>
           <ModalCloseButton />
-          <ModalBody minH={favorites.length ? "450px" : "auto"}>
+          <ModalBody
+            minH={
+              Array.isArray(favorites) && favorites.length ? "450px" : "auto"
+            }
+          >
             <Search
               placeholder="Search"
               label="Name, category o company"

@@ -61,6 +61,15 @@ const Button = {
         bg: "white",
       },
     },
+
+    ghost: {
+      _hover: {
+        bg: "transparent",
+      },
+      _active: {
+        bg: "transparent",
+      },
+    },
   },
 };
 

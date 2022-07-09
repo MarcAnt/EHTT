@@ -13,8 +13,10 @@ const useFetchEmployee = (url: string) => {
     const fetchData = async () => {
       try {
         const response = await fetch(url, { signal: myAbortController.signal });
-        const data: Employee[] = await response.json();
-        const newData = await transformedData(data);
+        const data: Omit<Employee[], "happiness" | "isFavorite"> =
+          await response.json();
+
+        const newData: Employee[] = await transformedData(data);
 
         setEmployees(newData);
 

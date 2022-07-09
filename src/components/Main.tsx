@@ -20,9 +20,14 @@ const Main = () => {
         justifyItems={"center"}
         alignItems={"center"}
       >
-        <Skeleton width={"100%"} height={"150px"} borderRadius={"0.5rem"} />
-        <Skeleton width={"100%"} height={"150px"} borderRadius={"0.5rem"} />
-        <Skeleton width={"100%"} height={"150px"} borderRadius={"0.5rem"} />
+        {Array.from({ length: 3 }, (_, i) => (
+          <Skeleton
+            key={i}
+            width={"100%"}
+            height={"150px"}
+            borderRadius={"0.5rem"}
+          />
+        ))}
       </SimpleGrid>
     );
   }
@@ -35,28 +40,30 @@ const Main = () => {
         justifyItems={"center"}
         alignItems={"center"}
       >
-        {employees
-          .filter((employee) => {
-            if (!filter.type.length || filter.value === "") return true;
+        {Array.isArray(employees) &&
+          employees.length &&
+          employees
+            .filter((employee) => {
+              if (!filter.type.length || filter.value === "") return true;
 
-            return filter.type.some((key) => {
-              const searchObj = {
-                name: employee.name,
-                category: employee.category,
-                company: employee.company,
-                happiness: employee.happiness,
-              };
+              return filter.type.some((key) => {
+                const searchObj = {
+                  name: employee.name,
+                  category: employee.category,
+                  company: employee.company,
+                  happiness: employee.happiness,
+                };
 
-              if (key === "happiness") return searchObj[key] === filter.value;
+                if (key === "happiness") return searchObj[key] === filter.value;
 
-              return searchObj[key]
-                .toLowerCase()
-                .includes(filter.value.toLowerCase());
-            });
-          })
-          .map((employee) => (
-            <Card key={employee.id} employee={employee} isCardModal={false} />
-          ))}
+                return searchObj[key]
+                  .toLowerCase()
+                  .includes(filter.value.toLowerCase());
+              });
+            })
+            .map((employee) => (
+              <Card key={employee.id} employee={employee} isCardModal={false} />
+            ))}
       </SimpleGrid>
     </Box>
   );

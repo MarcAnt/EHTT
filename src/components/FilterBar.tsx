@@ -59,30 +59,51 @@ const FilterBar = (): JSX.Element => {
           <PopoverContent bg={"brand.900"} width={"100%"}>
             <PopoverBody>
               <HStack justifyContent={"center"} alignItems={"center"}>
-                <Image
-                  src={HappyEmoji}
-                  alt={"Happy Emoji"}
-                  cursor={"pointer"}
+                <Button
+                  role={"button"}
+                  variant={"ghost"}
+                  title={"Happy"}
+                  padding={0}
                   onClick={() =>
                     setFilter({ type: ["happiness"], value: "happy" })
                   }
-                />
-                <Image
-                  src={NeutralEmoji}
-                  alt={"Neutral Emoji"}
-                  cursor={"pointer"}
+                >
+                  <Image
+                    src={HappyEmoji}
+                    alt={"Happy Emoji"}
+                    cursor={"pointer"}
+                  />
+                </Button>
+                <Button
+                  role={"button"}
+                  title={"Neutral"}
+                  variant={"ghost"}
+                  padding={0}
                   onClick={() =>
                     setFilter({ type: ["happiness"], value: "neutral" })
                   }
-                />
-                <Image
-                  src={SadEmoji}
-                  alt={"Happy Emoji"}
-                  cursor={"pointer"}
+                >
+                  <Image
+                    src={NeutralEmoji}
+                    alt={"Neutral Emoji"}
+                    cursor={"pointer"}
+                  />
+                </Button>
+                <Button
+                  role={"button"}
+                  title={"Sad"}
+                  variant={"ghost"}
+                  padding={0}
                   onClick={() =>
                     setFilter({ type: ["happiness"], value: "sad" })
                   }
-                />
+                >
+                  <Image
+                    src={SadEmoji}
+                    alt={"Happy Emoji"}
+                    cursor={"pointer"}
+                  />
+                </Button>
               </HStack>
             </PopoverBody>
           </PopoverContent>
@@ -103,11 +124,13 @@ const FilterBar = (): JSX.Element => {
             setFilter({ type: ["company"], value: e.target.value })
           }
         >
-          {getAllCompanies.map((company) => (
-            <option key={company} value={company}>
-              {company}
-            </option>
-          ))}
+          {Array.isArray(getAllCompanies) &&
+            getAllCompanies.length &&
+            getAllCompanies.map((company) => (
+              <option key={company} value={company}>
+                {company}
+              </option>
+            ))}
         </Select>
 
         <Select
@@ -125,11 +148,13 @@ const FilterBar = (): JSX.Element => {
             setFilter({ type: ["category"], value: e.target.value })
           }
         >
-          {getAllCategories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
+          {Array.isArray(getAllCategories) &&
+            getAllCategories.length &&
+            getAllCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
         </Select>
       </Flex>
     </HStack>

@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "fake-api": "json-server --watch src/api/db.json --port 5000"
+    "fake-api": "json-server --watch src/api/db.json --port 5000",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.2",
@@ -21,12 +23,34 @@
     "react-icons": "^4.4.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "jest": "^28.1.2",
+    "jsdom": "^20.0.0",
+    "msw": "^0.43.1",
+    "react-test-renderer": "^18.2.0",
     "sass": "^1.53.0",
     "typescript": "^4.6.3",
+    "vi-fetch": "^0.7.1",
     "vite": "^2.9.9",
-    "vite-tsconfig-paths": "^3.5.0"
+    "vite-tsconfig-paths": "^3.5.0",
+    "vitest": "^0.17.0",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "identity-obj-proxy"
+    }
   }
 }

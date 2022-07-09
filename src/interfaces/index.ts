@@ -8,6 +8,6 @@ export interface Employee {
   company: string;
   "company-image": string;
   levelOfHappiness: string | number;
-  happiness: HappinessLevels;
-  isFavorite: boolean;
+  happiness?: HappinessLevels;
+  isFavorite?: boolean;
 }

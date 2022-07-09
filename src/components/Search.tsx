@@ -26,7 +26,7 @@ const Search = ({
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    filterState({ type: queryBy, value: search });
+    filterState && filterState({ type: queryBy, value: search });
   }, [search]);
 
   return (

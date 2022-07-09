@@ -10,7 +10,7 @@ import { Employee } from "@/interfaces";
 import { SearchBy } from "@/types";
 import { URL_EMPLOYEES } from "@/services";
 
-interface EmployeeContextProps {
+export interface EmployeeContextProps {
   filteredEmployees: Employee[];
   loading: boolean;
   error: boolean;
@@ -39,7 +39,7 @@ interface EmployeeContextProps {
   filterFavorites: { type: SearchBy[]; value: string };
 }
 
-interface PropsChildren {
+export interface PropsChildren {
   children: JSX.Element | JSX.Element[] | React.ReactNode | React.ReactNode[];
 }
 
