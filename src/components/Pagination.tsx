@@ -8,14 +8,17 @@ const Pagination = ({
   next,
   prev,
   control,
+  dataSearched,
 }: {
   dataToPaginate: Employee[];
   next: () => void;
   prev: () => void;
   control: number;
+  dataSearched: Employee[];
 }) => {
   useEffect(() => {
-    //Only return to prev data if only exist
+    // Only return to prev data after delete
+
     if (
       dataToPaginate.length > 0 &&
       control > 0 &&
@@ -35,7 +38,11 @@ const Pagination = ({
 
           <Button
             onClick={next}
-            disabled={control >= dataToPaginate.length - 2 ? true : false}
+            disabled={
+              control >= dataToPaginate.length - 2 || dataSearched.length === 1
+                ? true
+                : false
+            }
           >
             <ChevronRightIcon />
           </Button>

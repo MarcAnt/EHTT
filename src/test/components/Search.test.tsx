@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 import { describe, expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Search from "@/components/Search";
+import BasicSearch from "@/components/BasicSearch";
 
 describe("Search test", () => {
   beforeEach(() => {
     render(
-      <Search
+      <BasicSearch
         placeholder="Search"
         label="Name, category o company"
         queryBy={["name", "category", "company"]}

@@ -1,18 +1,24 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react";
 
 import { BiSearchAlt2 } from "react-icons/bi";
 import { SearchBy } from "@/types";
+import { Employee } from "@/interfaces";
 
-const Search = ({
+const PaginationSearch = ({
   placeholder,
   label,
+  search,
+  setSearch,
   queryBy,
   filterState,
   setIsSearching,
+  isDisable,
 }: {
   placeholder: string;
   label?: string;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
   queryBy: SearchBy[];
   filterState: React.Dispatch<
     React.SetStateAction<{
@@ -20,11 +26,10 @@ const Search = ({
       value: string;
     }>
   >;
-
   setIsSearching?: React.Dispatch<React.SetStateAction<boolean>>;
+  isDisable?: boolean;
+  dataSearched?: Employee[];
 }) => {
-  const [search, setSearch] = useState("");
-
   useEffect(() => {
     filterState && filterState({ type: queryBy, value: search });
   }, [search]);
@@ -47,12 +52,18 @@ const Search = ({
             borderColor: "brand.700",
           }}
           value={search}
-          onKeyDown={() => setIsSearching && setIsSearching(true)}
-          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={() => {
+            setIsSearching && setIsSearching(true);
+          }}
+          onChange={(e) => {
+            setIsSearching && setIsSearching((prev) => !prev);
+            setSearch(e.target.value);
+          }}
+          disabled={isDisable}
         />
       </InputGroup>
     </>
   );
 };
 
-export default memo(Search);
+export default memo(PaginationSearch);
