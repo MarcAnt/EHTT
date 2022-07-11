@@ -11,6 +11,7 @@ import EmployeeContext, {
 } from "@/context/EmployeesContext";
 
 import { Employee } from "@/interfaces";
+import { HappinessLevels } from "@/types";
 
 const data: Employee[] = [
   {
@@ -21,7 +22,7 @@ const data: Employee[] = [
     company: "Planet of the Grapes",
     "company-image": "grapes.png",
     levelOfHappiness: "30",
-    happiness: "sad",
+    happiness: HappinessLevels.sad,
     isFavorite: false,
   },
   {
@@ -32,7 +33,7 @@ const data: Employee[] = [
     company: "Lord of the Fries",
     "company-image": "fries.png",
     levelOfHappiness: "100",
-    happiness: "happy",
+    happiness: HappinessLevels.happy,
     isFavorite: false,
   },
 ];
