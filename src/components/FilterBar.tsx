@@ -1,18 +1,6 @@
 import { memo, useContext } from "react";
 
-import {
-  Flex,
-  Select,
-  HStack,
-  Text,
-  Popover,
-  Button,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
-  Image,
-} from "@chakra-ui/react";
-import { FiChevronDown } from "react-icons/fi";
+import { Flex, Select, HStack, Text, Button, Image } from "@chakra-ui/react";
 
 import HappyEmoji from "@/assets/happy.svg";
 import NeutralEmoji from "@/assets/neutral.svg";
@@ -36,78 +24,58 @@ const FilterBar = (): JSX.Element => {
         <Button
           variant="solid"
           width={"100%"}
+          _active={{
+            bgColor: "brand.900",
+          }}
+          _focus={{
+            bgColor: "brand.900",
+          }}
           onClick={() => setFilter({ type: [], value: "" })}
         >
           All
         </Button>
 
-        <Popover>
-          <PopoverTrigger>
-            <Button
-              variant="outline"
-              rightIcon={<FiChevronDown />}
-              width={"100%"}
-              justifyContent={"space-between"}
-              _active={{
-                borderWidth: "2px",
-                borderColor: "brand.900",
-              }}
-            >
-              Happiness
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent bg={"brand.900"} width={"100%"}>
-            <PopoverBody>
-              <HStack justifyContent={"center"} alignItems={"center"}>
-                <Button
-                  role={"button"}
-                  variant={"ghost"}
-                  title={"Happy"}
-                  padding={0}
-                  onClick={() =>
-                    setFilter({ type: ["happiness"], value: "happy" })
-                  }
-                >
-                  <Image
-                    src={HappyEmoji}
-                    alt={"Happy Emoji"}
-                    cursor={"pointer"}
-                  />
-                </Button>
-                <Button
-                  role={"button"}
-                  title={"Neutral"}
-                  variant={"ghost"}
-                  padding={0}
-                  onClick={() =>
-                    setFilter({ type: ["happiness"], value: "neutral" })
-                  }
-                >
-                  <Image
-                    src={NeutralEmoji}
-                    alt={"Neutral Emoji"}
-                    cursor={"pointer"}
-                  />
-                </Button>
-                <Button
-                  role={"button"}
-                  title={"Sad"}
-                  variant={"ghost"}
-                  padding={0}
-                  onClick={() =>
-                    setFilter({ type: ["happiness"], value: "sad" })
-                  }
-                >
-                  <Image
-                    src={SadEmoji}
-                    alt={"Happy Emoji"}
-                    cursor={"pointer"}
-                  />
-                </Button>
-              </HStack>
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+        <HStack width={"100%"} justifyContent={"center"} alignItems={"center"}>
+          <Button
+            title="Happy"
+            variant={"solid"}
+            _active={{
+              bgColor: "brand.900",
+            }}
+            _focus={{
+              bgColor: "brand.900",
+            }}
+            onClick={() => setFilter({ type: ["happiness"], value: "happy" })}
+          >
+            😀
+          </Button>
+          <Button
+            title="Neutral"
+            variant={"solid"}
+            _active={{
+              bgColor: "brand.900",
+            }}
+            _focus={{
+              bgColor: "brand.900",
+            }}
+            onClick={() => setFilter({ type: ["happiness"], value: "neutral" })}
+          >
+            🙂
+          </Button>
+          <Button
+            title="Sad"
+            variant={"solid"}
+            _active={{
+              bgColor: "brand.900",
+            }}
+            _focus={{
+              bgColor: "brand.900",
+            }}
+            onClick={() => setFilter({ type: ["happiness"], value: "sad" })}
+          >
+            🙁
+          </Button>
+        </HStack>
 
         <Select
           variant="outline"

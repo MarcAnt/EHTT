@@ -3,6 +3,7 @@ import { useContext, useMemo } from "react";
 import EmployeeContext from "@/context/EmployeesContext";
 import { Box, SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
 import Card from "./card";
+import { Footer } from "./Footer";
 
 const Main = () => {
   const {

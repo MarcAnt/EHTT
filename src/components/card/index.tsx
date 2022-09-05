@@ -22,9 +22,9 @@ const Card = ({
 
   const emoji = useMemo(() => {
     const listEmojiImage = {
-      happy: happyEmoji,
-      neutral: neutralEmoji,
-      sad: sadEmoji,
+      happy: "😀" ? "😀" : happyEmoji,
+      neutral: "🙂" ? "🙂" : neutralEmoji,
+      sad: "🙁" ? "🙁" : sadEmoji,
     };
 
     const happiness = setHappinessEmoji(employee.levelOfHappiness);
@@ -46,21 +46,16 @@ const Card = ({
     >
       <div className="card-body">
         <div className="card-info">
-          <div className="card-info-title emoji">
-            <span>Happiness:</span>
-            <img src={emoji} alt="Emoji" />
+          <div className="card-info-level">
+            <div>
+              {emoji ? emoji : <img src={emoji} alt="Emoji" />}
+              <p>{` ${employee.levelOfHappiness}%`}</p>
+            </div>
+            <i>{employee.category}</i>
           </div>
           <div className="card-info-title">
-            <span>Name:</span>
             <span>{employee.name}</span>
-          </div>
-          <div className="card-info-title">
-            <span>Company:</span>
             <span>{employee.company}</span>
-          </div>
-          <div className="card-info-title">
-            <span>Category:</span>
-            <span>{employee.category}</span>
           </div>
         </div>
         <div className="card-img">
